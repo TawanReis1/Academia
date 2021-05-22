@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/TawanReis1/Academia#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa2-cors": "^2.0.6",
