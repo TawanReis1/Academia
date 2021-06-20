@@ -1,9 +1,13 @@
+if (!process.env.PRODUCTION) {
+    require('dotenv').config();
+}
+
 const Database = require('./shared/academia-management-context');
 const Koa = require('koa');
 const cors = require('koa2-cors');
 const bodyParser = require('koa-body');
 const app = new Koa();
-const publicRoutes = requre('./routes/public');
+const publicRoutes = require('./routes/public');
 const privateRoutes = require('./routes/private');
 
 (async () => {
@@ -20,4 +24,5 @@ const privateRoutes = require('./routes/private');
     privateRoutes.resolve(app);
 
     app.listen(process.env.PORT || 4000);
+    console.log(`API listening on PORT ${process.env.PORT || 4000}`);
 })()

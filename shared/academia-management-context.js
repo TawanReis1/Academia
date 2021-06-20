@@ -4,7 +4,6 @@ Mongoose.Promise = global.Promise;
 
 const mongoConfig = {
     useNewUrlParser: true,
-    autoReconnect: true,
     useUnifiedTopology: true
 };
 
