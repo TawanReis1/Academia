@@ -32,14 +32,11 @@ class Controller {
             if (!ctx.request.body.email) return onBadRequest('E-mail cannot be null', ctx);
             if (!ctx.request.body.password) return onBadRequest('Password cannot be null', ctx);
 
-            if (!ctx.request.body.document)
-            {
+            if (!ctx.request.body.document){
                 return onBadRequest('Document cannot be null', ctx);
-            } else if (ctx.request.body.document.length > 14)
-            {
+            } else if (ctx.request.body.document.length > 14){
                 return onBadRequest('Document must not be greater than 14 characters.', ctx);
-            }
-             
+            }             
 
             let res = await service.post(ctx.request.body);
 
