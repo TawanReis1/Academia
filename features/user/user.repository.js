@@ -6,7 +6,6 @@ class Repository {
     }
 
     create(user) {
-        console.log('entrou na repository');
         return User.create(user);
     }
 }

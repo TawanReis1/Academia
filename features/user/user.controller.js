@@ -5,12 +5,12 @@ class Controller {
 
     async list(ctx) {
         try {
-            // Chamando service para inserir na base de dados.
+            // Chamando service para listar dados na base.
             let res = await service.find(ctx.query);
 
             return onSuccess(res.meta, res.data, ctx);
         } catch (err) {
-            throw onError('Error trying to list users', err.toString(), ctx);
+            return onError('Error trying to list users', err.toString(), ctx);
         }
     }
 
@@ -21,28 +21,31 @@ class Controller {
 
             return onSuccess({}, res, ctx);
         } catch (err) {
-            throw onError('Error trying to get user by id', err.toString(), ctx);
+            return onError('Error trying to get user by id', err.toString(), ctx);
         }
     }
 
     async create(ctx) {
         try {
-            console.log('validando request');
             // Realizando validações no request.
             if (!ctx.request.body.name) return onBadRequest('Name cannot be null', ctx);
             if (!ctx.request.body.email) return onBadRequest('E-mail cannot be null', ctx);
             if (!ctx.request.body.password) return onBadRequest('Password cannot be null', ctx);
-            if (!ctx.request.body.cpf) return onBadRequest('CPF cannot be null', ctx);
 
-            console.log('request validado');
+            if (!ctx.request.body.document)
+            {
+                return onBadRequest('Document cannot be null', ctx);
+            } else if (ctx.request.body.document.length > 14)
+            {
+                return onBadRequest('Document must not be greater than 14 characters.', ctx);
+            }
+             
 
             let res = await service.post(ctx.request.body);
 
-            console.log('res :>> ', res);
-            return onCreated(ctx, ctx.request.body);
-
+            return onCreated(ctx, res);
         } catch (err) {
-            throw onError('Error trying to create an user', err.toString(), ctx);
+            return onError('Error trying to create an user', err.toString(), ctx);
         }
     }
 }

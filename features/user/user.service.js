@@ -12,10 +12,9 @@ class Service {
     }
 
     post(user) {
-        console.log('entrou na service');
         user.password = bcrypt.hashSync(user.password, 10);
 
-        return userRepository.create(user);
+        return userRepository.create(user); 
     }
 
 }

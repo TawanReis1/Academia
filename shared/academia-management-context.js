@@ -19,6 +19,7 @@ class AcademiaManagementContext {
     static connect() {
         const cs = process.env.MONGO_ACADEMIA_MANAGEMENT;
         AcademiaManagementContext.connection = Mongoose.createConnection(cs, mongoConfig);
+
     }
 }
 

@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
     password: { type: String, required: true },
     document: { type: String, required: true, unique: true, maxLength: 14 },
     type: { type: String, default: 'NORMAL', enum: ["ADMIN", "NORMAL"] }
-},
+    },
     {
         versionKey: false,
         timestamps: true
