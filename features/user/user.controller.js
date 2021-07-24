@@ -16,7 +16,7 @@ class Controller {
 
     async getById(ctx) {
         try {
-            let res = await service.get(ctx.params.id);
+            let res = await service.getById(ctx.params.id);
             res.password = null;
 
             return onSuccess({}, res, ctx);

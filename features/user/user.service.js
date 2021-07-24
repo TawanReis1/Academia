@@ -3,9 +3,17 @@ const bcrypt = require('bcrypt');
 
 class Service {
 
-    get(id) {
+    getById(id) {
         let objectRequest = {
             _id: id
+        }
+
+        return userRepository.findOne(objectRequest);
+    }
+
+    getByEmail(email) {
+        let objectRequest = {
+            email: email
         }
 
         return userRepository.findOne(objectRequest);
