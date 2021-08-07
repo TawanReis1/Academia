@@ -14,10 +14,10 @@ class Controller {
             const [email, password] = userAuth.split(':');
 
             const user = await UserService.getByEmail(email);
-            if (!user) return onBadRequest({message: 'Invalid e-mail'}, {});
+            if (!user) return onBadRequest({message: 'Invalid e-mail'}, ctx);            
 
             const isValidPassword = bcrypt.compareSync(password, user.password);
-            if (!isValidPassword) return onBadRequest({message: 'Invalid password'}, {});
+            if (!isValidPassword) return onBadRequest({message: 'Invalid password'}, ctx);
 
             // Gerando token
             const tokenDuration = 86400;
