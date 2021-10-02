@@ -5,5 +5,6 @@ const onCreated = require('./created');
 const onUpdated = require('./updated');
 const onBadRequest = require('./bad-request');
 const onNoContent = require('./no-content');
+const onForbidden = require('./forbidden');
 
-module.exports = { onError, onSuccess, onSuccessWithoutMeta, onCreated, onUpdated, onBadRequest, onNoContent };
+module.exports = { onError, onSuccess, onSuccessWithoutMeta, onCreated, onUpdated, onBadRequest, onNoContent, onForbidden };

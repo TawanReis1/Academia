@@ -21,6 +21,22 @@ class Repository {
     countDocuments(query) {
         return User.countDocuments(query);
     }
+
+    update(id, properties) {
+        let objectId = {
+            _id: id
+        };
+
+        return User.findOneAndUpdate(objectId, properties);
+    }
+
+    delete(id) {
+        let objectId = {
+            _id: id
+        };
+
+        return User.delete(objectId);
+    }
 }
 
 module.exports = new Repository();

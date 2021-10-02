@@ -17,7 +17,7 @@ class AcademiaMiddleware {
             return;
         }
 
-        await next();
+        await next("teste");
     }
 }
 

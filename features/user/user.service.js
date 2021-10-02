@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 class Service {
 
-    async find (conditions) {
+    async find(conditions) {
         const queryString = filterHeper.build(conditions);
         const paging = pagingHelper.build(conditions);
 
@@ -44,8 +44,14 @@ class Service {
         return userRepository.create(user); 
     }
 
+    update(id, properties) {
+        return userRepository.update(id, properties);
+    }
+
+    delete(id) {
+        return userRepository.delete(id);
+    }
+
 }
 
 module.exports = new Service();
-
-"https://www.facebook.com/v1/posts?userId=123&sort_createTime=desc"
